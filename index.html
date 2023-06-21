@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MARBELION</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url('20230621_155232.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .login-container {
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(47, 49, 54, 0.8);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .login-container h1 {
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="password"] {
+      width: 100%;
+      height: 30px;
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+      background-color: #40444b;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .input-group input[type="submit"] {
+      background-color: #7289da;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 16px; /* Mengatur ukuran teks tombol */
+      padding: 10px 20px; /* Memberikan padding di sekitar teks tombol */
+    }
+
+    .input-group input[type="submit"]:hover {
+      background-color: #677bc4;
+    }
+
+    .toggle-password {
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-password input {
+      padding-right: 25px;
+    }
+
+    .toggle-password .toggle-icon {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%);
+      color: #b9bbbe;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* Media Query untuk tampilan mobile */
+    @media (max-width: 480px) {
+      .login-container {
+        margin: 50px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>MARBELION</h1>
+    <form>
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username">
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <div class="toggle-password">
+          <input type="password" id="password" placeholder="Enter your password">
+          <span class="toggle-icon" onclick="togglePasswordVisibility()">&#128064;</span>
+        </div>
+      </div>
+      <div class="input-group"> <center>
+        <input type="submit" value="Login"></center>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function togglePasswordVisibility() {
+      var passwordInput = document.getElementById("password");
+      var toggleIcon = document.querySelector(".toggle-icon");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.innerHTML = "&#128065;";
+      } else {
+        passwordInput.type = "password";
+        toggleIcon.innerHTML = "&#128064;";
+      }
+    }
+  </script>
+</body>
+</html>
