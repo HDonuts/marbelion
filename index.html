@@ -50,15 +50,17 @@
       color: rgba(255, 255, 255, 0.8);
     }
 
-    .input-group input[type="submit"] {
+    .input-group button[type="submit"] {
       background-color: #7289da;
       color: #ffffff;
       cursor: pointer;
-      font-size: 16px; /* Mengatur ukuran teks tombol */
-      padding: 10px 20px; /* Memberikan padding di sekitar teks tombol */
+      font-size: 16px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
     }
 
-    .input-group input[type="submit"]:hover {
+    .input-group button[type="submit"]:hover {
       background-color: #677bc4;
     }
 
@@ -93,7 +95,7 @@
 <body>
   <div class="login-container">
     <h1>MARBELION</h1>
-    <form>
+    <form action="main.html">
       <div class="input-group">
         <label for="username">Username</label>
         <input type="text" id="username" placeholder="Enter your username">
@@ -105,8 +107,10 @@
           <span class="toggle-icon" onclick="togglePasswordVisibility()">&#128064;</span>
         </div>
       </div>
-      <div class="input-group"> <center>
-        <input type="submit" value="Login"></center>
+      <center>
+      <div class="input-group">
+        <button type="submit">Login</button>
+        </center>
       </div>
     </form>
   </div>

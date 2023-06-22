@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #36393f;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .chat-container {
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 50px;
+      position: fixed;
+      bottom: 20px;
+      right: 5px;
+    }
+
+    .message-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      height: 550px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+    }
+
+    .message-item {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .message-item .username {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    .message-item .timestamp {
+      font-size: 12px;
+      color: #999;
+      margin-left: 5px;
+    }
+
+    .message-input {
+      border-radius: 10px;
+      margin-top: 10px;
+      display: flex;
+      align-items: flex-end;
+      position: sticky;
+      bottom: 100;
+      background-color: #fff;
+      padding: 10px;
+    }
+
+    .message-input input[type="text"] {
+      border-radius: 10px;
+      flex-grow: 1;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .message-input input[type="submit"] {
+      border-radius: 10px;
+      width: 60px;
+      height: 30px;
+      background-color: #7289da;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <ul class="message-list" id="messageList">
+      <!-- Placeholder for message list -->
+    </ul>
+    <div class="message-input">
+      <input type="text" id="messageInput" placeholder="Enter your message">
+      <input type="submit" value="Send" onclick="sendMessage()">
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      var messageInput = document.getElementById("messageInput");
+      var messageList = document.getElementById("messageList");
+
+      if (messageInput.value !== "") {
+        var username = "You";
+        var message = messageInput.value.trim();
+        var timestamp = getCurrentTime();
+
+        var messageItem = document.createElement("li");
+        messageItem.classList.add("message-item");
+        messageItem.innerHTML =
+          '<span class="username">' +
+          username +
+          '</span>:<span class="message">' +
+          message +
+          '</span><span class="timestamp">' +
+          timestamp +
+          "</span>";
+
+        messageList.appendChild(messageItem);
+        messageInput.value = "";
+        messageList.scrollTop = messageList.scrollHeight;
+
+        messageInput.blur();
+        messageInput.focus();
+      }
+    }
+
+    function getCurrentTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      var time = hours + ":" + minutes + " " + ampm;
+      return time;
+    }
+  </script>
+</body>
+</html>
